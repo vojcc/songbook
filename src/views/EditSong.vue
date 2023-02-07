@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center">
-    <div class="flex flex-col h-[calc(100vh-70px)] w-4/5 sm:w-2/3 lg:w-1/2 space-y-6">
+    <div class="flex flex-col h-[calc(100dvh-70px)] w-4/5 sm:w-2/3 lg:w-1/2 space-y-6">
       <div></div>
       <div>
         <label class="text-sm font-semibold text-gray-600">
