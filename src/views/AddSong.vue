@@ -32,13 +32,9 @@
             Zapisz
           </button>
         </div>
-
       </div>
-
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -62,16 +58,18 @@ export default {
   },
 
   methods: {
-    insertSong() {
+    async insertSong() {
       localStorage.setItem(this.songId, JSON.stringify({
         id: this.songId,
         title: this.song.title,
         artist: this.song.artist,
         content: this.song.content,
       }));
+
+      await this.$router.push('/');
+
       window.location.reload();
     }
-  },
-
+  }
 }
 </script>

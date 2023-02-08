@@ -53,19 +53,22 @@ export default {
       this.song = JSON.parse(localStorage.getItem(this.editId));
     },
 
-    editSong() {
+    async editSong() {
       localStorage.setItem(this.editId, JSON.stringify({
         id: this.editId,
         title: this.song.title,
         artist: this.song.artist,
         content: this.song.content,
       }));
+
+      await this.$router.push('/');
+
       window.location.reload();
-    }
+    },
+
   },
   created() {
     this.getSong();
   }
-
 }
 </script>

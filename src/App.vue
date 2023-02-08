@@ -6,6 +6,7 @@
         <Component :is="Component"/>
       </transition>
     </router-view>
+
   </div>
 
 </template>
@@ -13,6 +14,7 @@
 <script>
 import TheNavbar from "./components/TheNavbar.vue";
 import { mapActions } from "vuex";
+import seedSongs from "./song-seeder";
 
 export default {
   components: {TheNavbar},
@@ -50,22 +52,11 @@ export default {
           this.setSongs(JSON.parse(data))
       }
     },
-
-    // seedSongs() {
-    //     localStorage.setItem(0, JSON.stringify({
-    //       id: 0,
-    //       title: 'Zorza',
-    //       artist: 'Quebonafide.',
-    //       content:
-    //           'Cztery be[C]zsenne no[em]ce jak Blade\n' +
-    //           'Impo[G]nują ci przemoc i [F]krew'
-    //     }));
-    // }
   },
 
   created() {
     this.getSongsFromLocalStorage();
-    // this.seedSongs();
+    // seedSongs();
     // this.checkMemoryUsage();
   },
 }
