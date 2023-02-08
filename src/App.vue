@@ -14,7 +14,7 @@
 <script>
 import TheNavbar from "./components/TheNavbar.vue";
 import { mapActions } from "vuex";
-import seedSongs from "./song-seeder";
+// import seedSongs from "./song-seeder";
 
 export default {
   components: {TheNavbar},
