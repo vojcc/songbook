@@ -29,7 +29,7 @@
         </label>
         <div class="flex justify-end">
           <button @click="editSong" class="mt-2 bg-transparent hover:bg-gray-200 text-gray-600 font-semibold py-2 px-4 border border-gray-400 drop-shadow-md rounded-md outline-none">
-            Edytuj
+            Zapisz
           </button>
         </div>
       </div>
@@ -62,7 +62,6 @@ export default {
       }));
 
       await this.$router.push('/');
-
       window.location.reload();
     },
 

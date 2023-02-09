@@ -10,6 +10,7 @@
               class="w-full border border-gray-400 drop-shadow-md rounded-md py-4 pl-3 pr-10 outline-none bg-slate-200"
               type="text">
         </label>
+        <span v-if="errors.title" class="break-words text-red-500 text-xs">{{ errors.title }}</span>
       </div>
 
       <div>
@@ -20,6 +21,7 @@
               class="w-full border border-gray-400 drop-shadow-md rounded-md py-4 pl-3 pr-10 outline-none bg-slate-200"
               type="text">
         </label>
+        <span v-if="errors.artist" class="break-words text-red-500 text-xs">{{ errors.artist }}</span>
       </div>
 
       <div class="flex flex-col flex-grow">
@@ -48,6 +50,10 @@ export default {
         artist: '',
         content: '',
       },
+      errors: {
+        title: '',
+        artist: ''
+      }
     }
   },
 
@@ -59,16 +65,28 @@ export default {
 
   methods: {
     async insertSong() {
-      localStorage.setItem(this.songId, JSON.stringify({
-        id: this.songId,
-        title: this.song.title,
-        artist: this.song.artist,
-        content: this.song.content,
-      }));
+      if (this.song.title && this.song.artist) {
+        localStorage.setItem(this.songId, JSON.stringify({
+          id: this.songId,
+          title: this.song.title,
+          artist: this.song.artist,
+          content: this.song.content,
+        }));
 
-      await this.$router.push('/');
-
-      window.location.reload();
+        await this.$router.push('/');
+        window.location.reload();
+      } else {
+        if (!this.song.title && this.song.artist) {
+          this.errors.title = 'Podaj tytuł!';
+          this.errors.artist = '';
+        } else if (this.song.title && !this.song.artist) {
+          this.errors.title = '';
+          this.errors.artist = 'Podaj wykonawcę!';
+        } else {
+          this.errors.title = 'Podaj tytuł!';
+          this.errors.artist = 'Podaj wykonawcę!';
+        }
+      }
     }
   }
 }

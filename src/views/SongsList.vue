@@ -16,7 +16,7 @@
     </div>
 
     <song-item
-        v-for="(song, index) in filteredSongs"
+        v-for="(song, index) in filteredSongs.reverse()"
         :key="index"
         :song="song">
     </song-item>
@@ -55,4 +55,3 @@ export default {
   },
 }
 </script>
-

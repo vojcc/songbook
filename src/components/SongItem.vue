@@ -21,13 +21,12 @@
 
       <div>
         <div class="flex justify-end p-1 pb-2 pr-2 space-x-6">
-          <router-link :to="editSongLink">
-            <img alt="" src="https://img.icons8.com/metro/18/676767/pencil--v1.png"/>
-          </router-link>
-
-          <button v-if="song.id == this.storage" @click="deleteSong">
+          <button title="Usuń piosenkę" v-if="song.id == this.storage" @click="deleteSong">
             <img alt="" src="https://img.icons8.com/metro/18/676767/delete.png"/>
           </button>
+          <router-link title="Edytuj piosenkę" :to="editSongLink">
+            <img alt="" src="https://img.icons8.com/metro/18/676767/pencil--v1.png"/>
+          </router-link>
         </div>
       </div>
     </div>
