@@ -76,6 +76,7 @@ export default {
         await this.$router.push('/');
         window.location.reload();
       } else {
+        navigator.vibrate(200);
         if (!this.song.title && this.song.artist) {
           this.errors.title = 'Podaj tytuł!';
           this.errors.artist = '';
