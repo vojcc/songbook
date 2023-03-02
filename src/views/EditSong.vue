@@ -54,16 +54,30 @@ export default {
     },
 
     async editSong() {
-      localStorage.setItem(this.editId, JSON.stringify({
-        id: this.editId,
-        title: this.song.title,
-        artist: this.song.artist,
-        content: this.song.content,
-      }));
+      if (this.song.title && this.song.artist) {
+        localStorage.setItem(this.editId, JSON.stringify({
+          id: this.editId,
+          title: this.song.title,
+          artist: this.song.artist,
+          content: this.song.content,
+        }));
 
-      await this.$router.push('/');
-      window.location.reload();
-    },
+        await this.$router.push('/');
+        window.location.reload();
+      } else {
+        navigator.vibrate(200);
+        if (!this.song.title && this.song.artist) {
+          this.errors.title = 'Podaj tytuł!';
+          this.errors.artist = '';
+        } else if (this.song.title && !this.song.artist) {
+          this.errors.title = '';
+          this.errors.artist = 'Podaj wykonawcę!';
+        } else {
+          this.errors.title = 'Podaj tytuł!';
+          this.errors.artist = 'Podaj wykonawcę!';
+        }
+      }
+    }
 
   },
   created() {
